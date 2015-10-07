@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Rodrigo Vignolli</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" >
+        <link href="css/materialize.css" rel="stylesheet" media="screen,projection">
+        <link href="css/modelo.css" rel="stylesheet">
+    </head>
+    <body>
+         <div class="blue lighten-1" role="navigation">
+            <div class="nav-wrapper">
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="google.html">Google</a></li>
+                    <li><a href="whatsapp.html">Whatsapp</a></li>
+                    <li><a href="tecnologia.html">Tecnologias</a></li>
+                     <li><a href="php.html">PHP</a></li>
+                    <li><a href="internet5g.html">Internet 5G</a></li>
+                    <li><a href="apple.html">Apple</a></li>
+                    <li><a href="iphone.html">iPhone 6</a></li>
+                    <li><a href="java.html">Java</a></li>
+                    <li><a href="laptop.html">Laptop</a></li>
+                    <li><a href="chip.html">Chips</a></li>
+                    <li><a href="windows.html">Windows 10</a></li>
+                   
+                    
+                </ul>
+                <nav>
+                  <div class="nav-wrapper blue lighten-1">
+                      <a href="index.html" class="brand-logo" style="padding-left: 90px;">RV Noticias</a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="https://www.google.com.br/"><i class="material-icons">search</i></a></li>
+                        <li><a href="https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&ss=1&scc=1&ltmpl=default&ltmplcache=2&hl=pt-BR&emr=1&elo=1#identifier"><i class="large material-icons">email</i></a></li>
+                        <li><a href="contato.html"><i class="large material-icons">call</i></a></li>
+                        <li><a href="https://www.youtube.com/?gl=BR&tab=w1"><i class="material-icons">queue_music</i></a></li>
+                        
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Escolha o tema<i class="material-icons right">arrow_drop_down</i></a></li>
+          
+                    </ul>
+                        <a href="#" data-activates="nav-mobile" class="button-collapse hide-on-large-only" >
+                            <i class="material-icons">menu</i>
+                        </a>
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="google.html">Google</a></li>
+                        <li><a href="whatsapp.html">Whatsapp</a></li>
+                        <li><a href="tecnologia.html">Tecnologias</a></li>
+                         <li><a href="php.html">PHP</a></li>
+                        <li><a href="internet5g.html">Internet 5G</a></li>
+                        <li><a href="apple.html">Apple</a></li>
+                        <li><a href="iphone.html">iPhone 6</a></li>
+                        <li><a href="java.html">Java</a></li>
+                        <li><a href="laptop.html">Laptop</a></li>
+                        <li><a href="chip.html">Chips</a></li>
+                        <li><a href="windows.html">Windows 10</a></li>
+                    </ul>
+                    </div>
+                </nav> 
+            </div>
+        </div>
+        <div class="section ">
+            <div class="container">
+                <div class="row center">
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="imagens/java.png" alt="" class="circle" style="height: 80px; width: 70px;">
+                            <span class="title"><h3 class="cyan lighten-4">Java</h3></span>
+                        </li>
+                    </ul>
+                    <div class="row center">
+                        <h4 class="col s12">Tunning de solução Java Web</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+         <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <p>Segue abaixo um relato resumido de uma das minhas consultorias para uma empresa que tinha uma solução web feita em Java que estava apresentando travamento e tempo de resposta ruim. O objetivo com esse artigo é apresentar os problemas encontrados na solução e as medidas adotadas de otimização, de forma com que outros profissionais possam aprender com os fatos e ou reutilizar as estratégias encontradas.</p>
+                        <p>1. Otimização de acesso ao SGDB - 
+                            Fizemos uma triagem da quantidade de acessos que o sistema faz ao sgdb quando um usuário acessa os principais processos. O resultado foi 117 round-trips. Após estudos e otimizações, reduzimos para 41 nos mesmos processos. Foi uma redução de 65%! Dado que o número de acessos diário dessa solução é de +- 7 mil – isso que dizer que reduzimos por dia (117 – 41 = 76 * 7.000) 532 mil acesso ao sgdb. Essa otimização, além de aumentar o tempo de resposta, reduziu drasticamente o número de conexões do DataSource e a quantidade de parse de framework ORM, o que resultou em menos gastos com HEAP.</p>
+                        <p>2. Otimização de auditoria - 
+                            O sistema usa uma tabela de logg que registra toda a auditoria de seus processos no qual tem uma coluna auto incrementável manual com uma chave composta, que por sua vez resulta em algumas consequências negativas:
+                            Para evitar inconsistências de concorrência nos MAXID + 1 para inserir registro, o sistema sincroniza a concorrência em todos os processos, deixando a execução da solução em modo “MONO” usuários.
+                            Para cada novo registro de logg, o sistema é obrigado a fazer + 1 acesso ao sgdb para pegar o próximo MAXID + 1 a ser gravado.</p>
+                        <p>Após estudos e otimizações, resolvemos ambos os problemas criando um nova tabela de logg contendo a mesma estrutura, só que utilizando o conceito de UUID como chave primária. O resultado foi que para cada novo registro de auditoria não é mais necessário acessar o sgdb para buscar o próximo MAXID + 1, uma vez que o UUID é gerado pela própria solução. Usando a mesma média de acesso diário já indicada acima, reduzimos + 7 mil acessos ao sgdb por dia. A partir dessa medida, foi possível retirar todas as sincronizações das operações de auditoria, fazendo com que eles pudessem ser executados de forma agora 100% concorrentes.</p>
+                        <p>3. Auditoria assíncrona - O sistema faz registros de loggs com características somente de acesso, não sendo processos idempotentes. Do ponto de vista arquitetural, não faz sentido o usuário final esperar estes registros de loggs acontecer enquanto navega na solução. Com isso,  foi elaborada uma nova arquitetura de logg assíncrona específica para estes processos, no qual o sistema faz uso de threads separadas que vão registrando os loggs, sem fazer o usuário pagar o tempo de espera na resposta da sua requisição HTTP.</p>
+                        <p>4. Índices de acesso - Depois de averiguações, foi constatado que as tabelas do sistema estão sem nenhum índice, fazendo com que o sgdb busque os registros originários das consultas do sistema (WHERE) 100% sequencial. Com base em todas as consultas existentes, foi criado uma API de índices que promova melhor performance nas consultas das tabelas, conforme descrito no livro oficial do provedor do sgdb. Foram criados exatamente 63 índices.</p>
+                        <p>5. Evitando bloqueios pessimistas -  O sistema faz acesso constante a um banco de dados de uma outra solução legada da década de 90, que por sua vez, utiliza-se do conceito de bloqueio pessimista para assegurar a consistência nas concorrências de seus processos. Em virtude disso, esse sistema sofre intensivo bloqueio, não conseguindo acessar as tabelas dessa outra solução e ocasionando diversas paradas diárias sentidas constantemente pelos usuários finais. Para contornar isso, aplicamos o nível de isolamento das consultas do sistema para READ_UNCOMMITED que faz leituras das tabela independente dos bloqueios existentes. Os únicos lugares que tivemos que manter o nível READ_COMMITED é nas operações de processos de negócios. Como hoje o sistema é praticamente 70% de consultas e 30% de operações de negócios transacionais, o usuário final com essa nova otimização não ficará mais  impedido de acessar e consultar informações quando existir bloqueios pessimistas. Isso reduzirá drasticamente a maioria das reclamações.</p>
+                        <p>6. Otimização de filtro NO-CACHE
+                            Depois de averiguações, foi constatado que a solução faz uso de um filtro servlet para decorar recursos web como “no-cache” HTTP. Nesse controle, encontramos o uso de operação de substring() e contains() da classejava.lang.String. Para otimizar, foi utilizado o recurso de expressão regular, juntamente com a classe java.lang.Match que funciona bem mais rápido na procura de padrões de texto. Com base na mesma média de acesso diário já indicada acima e que em cada requisição HTTP o filtro é executado +- 6 vezes, essa otimização deixou a tempo de resposta bem melhor.</p>
+                        <p>Texto produzido por: Fernando Franzini</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <footer class="page-footer blue lighten-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Dicas</h5>
+                <p class="grey-text text-lighten-4">Deixe aqui sua sugestãos de temas para o site!</p>
+               
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Saiba Mais</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="http://www.linhadecodigo.com.br/artigo/81/html-basico.aspx" target="_blank">HTML</a></li>
+                  <li><a class="grey-text text-lighten-3" href="http://www.w3.org/Style/CSS/" target="_blank">CSS</a></li>
+                  <li><a class="grey-text text-lighten-3" href="http://www.w3schools.com/js/" target="_blank">Java Script</a></li>
+                  <li><a class="grey-text text-lighten-3" href="http://www.w3schools.com/php/" target="_blank">PHP</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2015 - Rodrigo Vignolli
+            <a class="grey-text text-lighten-4 right" href="https://www.facebook.com/rodrigo.vignolli.1" target="_blank">Entre em contato</a>
+            </div>
+          </div>
+        </footer>
+        
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.min.js"></script>
+        <script src="js/inicializar.js"></script>
+    </body>
+</html>

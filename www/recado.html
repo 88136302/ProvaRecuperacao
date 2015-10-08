@@ -15,6 +15,11 @@ and open the template in the editor.
         <link href="css/modelo.css" rel="stylesheet">
     </head>
     <body>
+        <script>
+            function mensagem(){
+                alert("Mensagem enviada com sucesso!!!");
+            }
+        </script>
          <div class="blue lighten-1" role="navigation">
             <div class="nav-wrapper">
                 <ul id="dropdown1" class="dropdown-content">
@@ -67,66 +72,59 @@ and open the template in the editor.
         <div class="section ">
             <div class="container">
                 <div class="row center">
-                    <h2 class="col s12 indigo-text ">Computação Quântica</h2>
-                    <div class="row center">
-                        <h4 class="col s12">A computação quântica fica mais próxima da realidade com chips feitos de silício</h4>
-                    </div>
+                    <h2 class="col s12 indigo-text ">Deixe aqui seu recado</h2>
                 </div>
             </div>
         </div>
-        
-         <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <p>A computação quântica é algo bastante complexo, e um de seus principais problemas é exigir materiais exóticos para criar seus circuitos igualmente exóticos. Agora, uma equipe de pesquisadores conseguiu criar a primeira porta lógica quântica do mundo usando o bom e velho silício.</p>
-                        <p>Engenheiros da Universidade de Nova Gales do Sul (Austrália) desenvolveram um dispositivo que permite a dois bits quânticos – conhecidos como qubits – se comunicarem um com o outro. Isso foi realizado em silício, e poderia tornar realidade um computador quântico mais prático.</p>
-                        <p>Normalmente, as informações digitais são armazenadas como bits que assumem um estado de 0 ou 1. Mas, em um computador quântico, qubits podem assumir um estado de 0, 1, ou zero e um ao mesmo tempo. É algo que parece contraditório, mas realmente acontece – saiba mais detalhes aqui.</p>
-                        <p>O qubit tem a capacidade de ser 0 e 1 simultaneamente. Em tese, isso permite que um computador quântico rode muitos cálculos em paralelo, sendo incrivelmente rápido.</p>
-                        <p>O problema é que um computador quântico deve ser capaz de executar operações não apenas dentro de um único qubit, mas entre um qubit e outro.
-                            Tais processos podem ser usados para criar o que se chama de porta lógica: pegar dois valores e devolver um resultado com base em uma regra simples. Isso já foi feito antes na computação quântica, mas exige o uso de materiais exóticos.</p>
-                        <p>Andrew Dzurak, que liderou a pesquisa, usou conceitos de transistores existentes para que dois qubits de silício se comunicassem de forma confiável um com o outro.
-                            Para fazer isso, a equipe usou transistores não muito diferentes dos que você encontra no seu computador ou smartphone, e os reconfigurou para que cada um tivesse apenas um elétron associado a ele.</p>
-                        <p>Aí está o pulo do gato: como o estado de um bit quântico pode ser definido pela rotação de um único elétron, cada transistor virou basicamente um qubit.
-                            Em um artigo publicado na revista Nature, a equipe mostra que eles podem usar eletrodos de metal nos transistores para controlar os qubits e fazê-los interagir um com o outro.</p>
-                        <p>“Uma descoberta chave foi abordar cada qubit de forma independente, apenas controlando a tensão em um eletrodo de porta de metal acima dele”, explica Dzurak. “Isso realmente simplifica a operação de lógica em um e dois qubits”.</p>
-                    </div>
+         <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">Nome</label>
                 </div>
-            </div>
+                <div class="input-field col s6">
+                  <i class="material-icons prefix">phone</i>
+                  <input id="icon_telephone" type="tel" class="validate">
+                  <label for="icon_telephone">Telefone</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">email</i>
+                  <input id="email" type="email" class="validate">
+                  <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+              </div>
+            </form>
+        </div>  
+        
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">mode_edit</i>
+                  <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                  <label for="icon_prefix2">Mensagem</label>
+                </div>
+              </div>
+            </form>
+         </div>
+        
+        <div class="row center-align">
+            <a class="waves-effect waves-light btn blue" href="index.html" onclick="mensagem();" style="margin-bottom: 30px;">Enviar</a>
         </div>
         
-        <div class="section">
-            <div class="container center-align">
-                <div class="row">
-                    <div>
-                        <img src="imagens/noticia4.jpg" class="responsive-img">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <p>Este é um grande avanço, principalmente porque o mundo da computação depende bastante do silício. Como a abordagem da equipe basicamente reutiliza uma tecnologia existente, deve ser possível criar um chip quântico em escala muito mais cedo usando essa abordagem do que qualquer outra.
-                            No entanto, isso não quer dizer que será fácil. “Ainda há muita engenharia a ser feita para alcançar os layouts de fiação necessários para fazer operações de leitura e escrita em milhares ou milhões de qubits”, explica Dzurak.</p>
-                        <p>Mesmo assim, ele avalia que “um chip com dezenas ou centenas de qubits CMOS poderia ser feito nos próximos cinco anos”, se houver investimento suficiente.
-                            Por isso, o laboratório da equipe vai trabalhar em estreita colaboração com as fabricantes e designers de chips para criar protótipos funcionais com dezenas de qubits.</p>
-                      
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-            <div class="video-container col s6">
-                <iframe width="400" height="200" src="https://www.youtube.com/embed/WXKJ-oUq6F8" frameborder="0" allowfullscreen></iframe>
-             </div>
-        
-         <footer class="page-footer blue lighten-1">
+        <footer class="page-footer blue lighten-1">
           <div class="container">
             <div class="row">
-             <div class="col l6 s12">
+              <div class="col l6 s12">
                 <h5 class="white-text">Desenvolvimento Web</h5>
                 <p class="grey-text text-lighten-4">Desenvolvimento web é o termo utilizado para descrever o desenvolvimento de 
                             sites, na Internet ou numa intranet. O desenvolvimento refere-se a um processo de construção e 
